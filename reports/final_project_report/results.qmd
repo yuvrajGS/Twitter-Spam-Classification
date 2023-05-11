@@ -1,0 +1,137 @@
+# Results
+
+## Description of the Models
+
+The models used in this project are as follows:
+
+-   K Nearest Neighbors (kNN) Classifier
+
+-   Random Forest Classifier
+
+-   Sequential Neural Network
+
+### K Nearest Neighbors (kNN) Classifier
+
+Finds the k nearest data points to a new data point and then classifies the new data point based on the majority class of the k nearest data points.
+
+Hyperparameters:
+
+-   n_neighbors: The number of neighbors to use by default for kneighbors.
+
+-   metric: The distance metric to calculate the distance between the input data points
+
+Optimal Hyperparameters:
+
+n_neighbors = 20, metric = 'manhattan'
+
+### Random Forest Classifier
+
+A random forest fits a number of decision tree classifiers on various sub-samples of the dataset to come up with a prediction by averaging the predictions of each decision tree.
+
+Hyperparameters:
+
+-   n_estimators: The number of trees in the forest.
+
+Optimal Hyperparameters:
+
+n_estimators = 40
+
+### Sequential Neural Network
+
+A neural network that uses an input layer, one or more hidden layers, and an output layer which is used to classify the data. The hidden layers are used to learn the features of the data.
+
+Hyperparameters:
+
+-   optimizer: The optimization algorithm
+
+-   loss: The loss function
+
+-   metrics: The metrics to be evaluated by the model during training and testing
+
+-   epochs: The number of epochs to train the model
+
+-   batch_size: The number of examples the model sees before adjusting its weights
+
+Optimal Hyperparameters:
+
+optimizer = 'adam', loss = 'binary_crossentropy', metrics = \['accuracy'\], epochs = 100, batch_size = 32
+
+## Performance Metrics
+
+In our report, we used model evaluation metrics such as accuracy, precision, recall, F1 score and area under the receiver operating characteristic curve (AUC-ROC) to record the performance of our KNN, random forest and sequential neural networks models. To begin, our model accuracy which measures the percentage of correctly classified instances out of all instances ranked with random forest, KNN and neural networks respectively with their scores shown in the table below (table 4.1). To continue, we access the precision of the models to identify true positives which showed our random forest model outperformed the now similarly scored KNN and neural networks, models. Recall, which means the true positives out of all actual positive instances showed a significant drop for the neural networks model meaning cases of false positives were greater when compared to the other models. As the harmonic mean of precision and recall, the F1 score measures the balance between them and followed the same ranking and values as the accuracy. Finally, utilizing the AUC-ROC we can re-affirm our claim of the model accuracies. 
+
+## Results Table
+
+```{=tex}
+\begin{table}[h!]
+  \centering
+  \caption{Classification Report Table}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{Model} & \textbf{precision} & \textbf{recall} & \textbf{f1-score} & \textbf{support} \\
+    \hline
+    KNN & 0.79 & 1.00 & 0.88 & 217 \\
+    & 0.99 & 0.70 & 0.82 & 200 \\
+    \cline{2-5}
+    & \multicolumn{3}{c|}{} & \\
+    \cline{2-5}
+    & accuracy &  & 0.86 & 417 \\
+    & macro avg & 0.89 & 0.85 & 417 \\
+    & weighted avg & 0.88 & 0.86 & 417 \\
+    \cline{2-5}
+    & \multicolumn{3}{c|}{} & \\
+    \hline
+    Random Forest & 0.98 & 0.97 & 0.97 & 216 \\
+    & 0.97 & 0.98 & 0.97 & 201 \\
+    \cline{2-5}
+    & \multicolumn{3}{c|}{} & \\
+    \cline{2-5}
+    & accuracy &  & 0.97 & 417 \\
+    & macro avg & 0.97 & 0.97 & 417 \\
+    & weighted avg & 0.97 & 0.97 & 417 \\
+    \cline{2-5}
+    & \multicolumn{3}{c|}{} & \\
+    \hline
+    Neural Network & 0.74 & 1.00 & 0.85 & 216 \\
+    & 0.99 & 0.62 & 0.76 & 201 \\
+    \cline{2-5}
+    & \multicolumn{3}{c|}{} & \\
+    \cline{2-5}
+    & accuracy &  & 0.82 & 417 \\
+    & macro avg & 0.87 & 0.81 & 417 \\
+    & weighted avg & 0.86 & 0.82 & 417 \\
+    \hline
+  \end{tabular}
+\end{table}
+```
+## Interpretation of the Results
+
+### K Nearest Neighbors (kNN) Classifier
+
+As shown in table 4.1, the K Nearest Neighbors model had an accuracy of 85.61% on the validation dataset. The model had a precision of 0.79 for label 0 and 0.99 for label 1. This means that for all of the positive predictions made for a non-spam account, 79% were correct. While for a spam account, the precision is 0.99 which means that for all of the positive predictions made for a spam account, 99% were correct. The recall for label 0 was 1.00 and for label 1 was 0.70. This means that for all of the actual non-spam accounts, 100% were correctly classified. While for all of the actual spam accounts, 70% were correctly classified. The f1-score for label 0 was 0.88 and for label 1 was 0.82. This means that for all of the positive predictions made for a non-spam account, 88% were correct. While for a spam account, the f1-score is 0.82 which means that for all of the positive predictions made for a spam account, 82% were correct.
+
+### Random Forest Classifier
+
+As shown in table 4.1, the Random Forest Classifier model had an accuracy of 97.12% on the validation dataset. The model had a precision of 0.97 for label 0 and 0.98 for label 1. This means that for all of the positive predictions made for a non-spam account, 97% were correct. While for a spam account, the precision is 0.98 which means that for all of the positive predictions made for a spam account, 98% were correct. The recall for label 0 was 0.99 and for label 1 was 0.95. This means that for all of the actual non-spam accounts, 99% were correctly classified. While for all of the actual spam accounts, 95% were correctly classified. The f1-score for label 0 was 0.98 and for label 1 was 0.97. This means that for all of the positive predictions made for a non-spam account, 98% were correct. While for a spam account, the f1-score is 0.97 which means that for all of the positive predictions made for a spam account, 97% were correct.
+
+### Sequential Neural Network
+
+As shown in table 4.1, the Sequential Neural Network model had an accuracy of 81.53% on the validation dataset. The model had a precision of 0.81 for label 0 and 0.82 for label 1. This means that for all of the positive predictions made for a non-spam account, 81% were correct. While for a spam account, the precision is 0.82 which means that for all of the positive predictions made for a spam account, 82% were correct. The recall for label 0 was 0.99 and for label 1 was 0.70. This means that for all of the actual non-spam accounts, 99% were correctly classified. While for all of the actual spam accounts, 70% were correctly classified. The f1-score for label 0 was 0.89 and for label 1 was 0.75. This means that for all of the positive predictions made for a non-spam account, 89% were correct. While for a spam account, the f1-score is 0.75 which means that for all of the positive predictions made for a spam account, 75% were correct.
+
+### Accuracy Analysis
+
+The Random Forest Classifier model had the accuracy of 97.12% on the validation dataset. This means that the model was able to correctly classify 97.12% of the twitter users as either a spam or non-spam account. The K Nearest Neighbors model had an accuracy of 85.61% and the Sequential Neural Network model had an accuracy of 81.53%. The Random Forest Classifier model had the highest accuracy of 97.12% on the validation dataset. This high accuracy suggests that it was the best model for this dataset.
+
+## Visualization
+
+In this study, we evaluated the performance of three machine learning algorithms: K Nearest Neighbours (KNN), Random Forest, and Sequential Neural Network. We utilized metrics such as the AUC-ROC curve for all models and the learning curve for the KNN model.
+
+The ROC curve shows the true positive rate plotted against the false positive rate for different threshold values. The closer the curve is to the upper left-hand corner of the graph, the better the model's performance. Our results showed that the Random Forest model had the highest area under the curve (AUC) at 0.97, followed by the KNN model at 0.85, and the Sequential Neural Network at 0.81 This suggests that the Random Forest model is the most effective in identifying bot accounts on Twitter, followed by KNN and Sequential Neural Network.
+
+![](images/ROC.png){width="400"}
+
+In addition to the ROC curve, we also analyzed the learning curve for the KNN model to assess its performance on training and validation set as we increased the amount of training data. The learning curve provides a visualization of how the model's performance changes as we increase the amount of data used for training. The learning curve helped us identify whether the our model was over or underfitting the data based on the performance scores for both the training and validation sets. Through the visualization we can come to the conclusion that the model is fitting the data well as both the training and validation set scores are high.
+
+![](images/learningCurve.png){width="400"}
+
+Overall, our results demonstrate that the Random Forest model outperformed KNN and Sequential Neural Network in identifying bot accounts on Twitter. The ROC curve and learning curve visualizations provided valuable insights into the performance of each model and can aid in the interpretation of our results.

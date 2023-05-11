@@ -1,0 +1,13 @@
+# Conclusion
+
+As per our objective of detecting spam users on Twitter based on their tweets and profile information, we achieved this by using a supervised learning approach with a categorial target variable in order to classify a user as a spam or not spam. 
+
+We pre-processed our dataset to use around 1,000 tweets each for 1,000 users, which was split into training and testing sets. Topics were extracted both from the tweets and the users profile information. We decided to use an approach that would individualize the text from each users tweet into a topic by counting the frequency of each word in the tweet. Dimensionalty reduction of the data was used by eliminating topics of low feature importance, reducing the surplus of topics.
+
+After our feature engineering, we had to decide which supervised classification models to use to classify our data. As this was a binary classification problem with a large dataset, we decided to use K Nearest Neighbors, Random Forest, and Sequential Neural Network Models. We used a grid search to find the best hyperparameters for each model and used the best hyperparameters to train our models and evaluate them on the testing set.
+
+During the evaluation of our models, we used many of the classification metrics including accuracy, precision, recall, and F1 score. We had a very high performance of our Random Forest Model, which had an accuracy of 97.12% followed by the K Nearest Neighbors Model and the Sequential Neural Network Model. Our Random Forest Model had the highest accuracy which indicates that it was able to perform well on classifying human and bot users.
+
+For future research, we can use a more advanced dimensionality reduction technique such as Principal Component Analysis to reduce the number of features. In addition,  we can update our approach in using each word in a tweet as a topic, and use some Natural Language processing techniques by employing a sentiment analysis. Several more classification models can be used with our data to average the results to reduce the variance of our models. An important model can consider would be the Naive Bayes Model, which performs well on text classification problems. We may also be able to extend our model to other platforms such as Instagram and Facebook.
+
+With the results of our models, we will be able to generalize our results to other datasets of Twitter users and their tweets. 

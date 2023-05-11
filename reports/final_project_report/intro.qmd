@@ -1,0 +1,47 @@
+# Introduction to Project
+
+## Overview
+
+The internet has revolutionized the way people communicate and interact with each other and at the epicentre of this societal shift is Twitter. Twitter's long-standing reputation has kept it within the ever-turning social sphere but has also allowed it to fester as a breeding ground for spam users as fake accounts which are often created individually or as part of a wider botnet to spread spam and malicious content on the platform. The detection and removal of these automated accounts have become a major challenge for Twitter and its users.
+
+In this project, we aim to develop a system for detecting automated accounts on Twitter based on profile information and tweets. We will use a supervised learning approach to classify users as either spam or not spam. We will also explore various data pre-processing techniques and classification models to achieve optimal accuracy in spam user detection.
+
+## Objectives of Project
+
+The main objective of this project is to detect and classify automated users on Twitter using machine learning techniques. Specifically, we aim to achieve the following objectives:
+
+-   Pre-process a dataset of tweets and user profile information to use as features in our classification model, specifically employing various pre-processing techniques such as
+
+    -   Data cleaning
+
+    -   Data normalization
+
+    -   Data transformation
+
+    -   Feature selection
+
+    -   Text pre-processing
+
+-   Develop a supervised learning approach with a categorical target variable to classify a user as spam or not spam
+
+-   Explore various supervised classification models such as K Nearest Neighbors, Random Forest, and Sequential Neural Network Models and evaluate their performance on our dataset
+
+    -   Accuracy
+
+    -   F1 score
+
+    -   Recall
+
+    -   Precision
+
+-   Optimize our classification models using hyperparameter tuning and choose the best model based on its accuracy and other classification metrics
+
+-   Create visualizations to better understand the data and identify any patterns or relationships that may exist, ultimately aiding in the development of a more accurate and efficient model.
+
+    -   AUC-ROC
+
+    -   Learning curve
+
+    -   Correlation heatmap
+
+    -   Feature importance bar chart

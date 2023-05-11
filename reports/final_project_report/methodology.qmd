@@ -1,0 +1,40 @@
+# Methodology
+
+## Platform and Machine Configurations Used
+
+The following machine configuration was used for training and testing these models:
+
+-   Central Processing Unit (CPU): Intel Core i7-8565U CPU \@ 1.80GHz
+
+-   Graphics Processing Unit (GPU): NVIDIA GeForce GTX 1050ti
+
+-   Memory: 8GB Operating System: Windows 10
+
+## Data Split
+
+The data used was split up into two sets: training and validation. As there is a lot of data, we decided to use an 80:20 split with 20% as the validation set. The training set was used to train the model and the validation set was used to evaluate the model's performance and with this ratio there is still enough testing data to get a reliable estimate of the performance.
+
+## Model Planning
+
+In this classification problem, the dataset is relatively large making it essential to consider models that can handle such data. Three different models were carefully evaluated and considered for this problem: K Nearest Neighbor (kNN) Classifier, Random Forest Classifier, and the Sequential Neural Network model. The K nearest neighbours algorithm operates by finding the k nearest data points to a new data point and then classifying the new data point based on the majority class of the k nearest data points. The random forest classifier is an ensemble of decision trees that are combined to produce a single prediction. This approach can handle noisy data and generally has much better predictive accuracy than just one decision tree without using much tuning. The sequential neural network model is a neural network that uses an input layer, one or more hidden layers, and an output layer which is used to classify the data. These models were selected for their ability to perform well on large datasets and their ease of interpretability. Other classification models such as logistic regression were also considered but were not selected due to their inability to handle large datasets as it would be too sensitive to outliers and noise.
+
+## Model Training:
+
+As previously mentioned the models were fit on X_train and y_train using an 80:20 split where X_train is the training data and y_train is the training labels. The models were trained using several hyperparameters which were tuned to optimize the model's performance which are discovered through a sensitivity anaylsis.
+
+### K Nearest Neighbors (kNN) Classifier
+
+We decided to use metric in addition to the n_neighbours for our hyperparameter selection. To select the best value for the k parameter which represents the number of nearest neighbors to use, several models were trained on the training dataset with incrementing values of k using a grid search algorithm at increments of 10 each time. After the evaluation of the different models, we found that the optimal value for neighbours was **20**. The metric hyperparameter specifies the distance metric used to calculate the distance between the input data points. We found that the **manhattan distance** metric performed the best.
+
+### Random Forest Classifier
+
+To select the best value for the n_estimators hyperparameter we followed a similar approach to our K Nearest Neighbors model. The n_estimators hyperparameter is used to specify the number of decision trees to be used in the random forest. This parameter is directly proportional to the complexity of the model, such that we had to find the optimal value which would not induce overfitting. We trained several models with incrementing values of n_estimators using a grid search algorithm. After the evaluation of the different models, we found that the optimal value for n_estimators was **40**.
+
+### Sequential Neural Network
+
+The Sequential Neural Network model was trained using the Keras library. The model was trained using the Adam optimizer and the categorical crossentropy loss function which is commonly used for binary classification problems. We used the hyperparameters of epochs and batch size to train our models and found that the optimal model was trained for **100** epochs with a batch size of **32**. An epoch refers to the count of how many times a model is trained on the dataset, which allows it to learn from adjusting its weights. The batch size is the number of examples the model sees before adjusting its weights.
+
+## Model Optimization
+
+In order to select the bet hyperparameters for each of our models, we used a grid search to train several models with different hyperparameters and then evaluated the performance of each model on the validation dataset. The model with the best performance was selected as the final model. Some hyperparameters were not selected for optimization as they did not have a significant impact on the model's performance. For example, the max_leaf nodes hyperparameter was not selected for optimization in the Random Forest Classifier model. In addition, too many hyperparameters can increase the risk of overfitting the models to the training data.
+

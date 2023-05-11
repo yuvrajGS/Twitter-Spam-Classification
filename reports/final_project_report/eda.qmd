@@ -1,0 +1,57 @@
+# Pre-Processing and Exploratory Data Analysis
+
+Pre-processing and exploratory data analysis are fundamental in the machine learning development process. Raw data is verified to be of high quality, complete, and ready for analysis. Pre-processing involves a series of steps pertaining to cleaning the data, handling missing values, encoding categorical variables, and scaling numerical features. In contrast, Exploratory data analysis involves visualizing and summarizing the data to gain insights into its underlying patterns, relationships, and distributions.
+
+In this report, we will discuss the pre-processing and exploratory data analysis steps taken to analyze a dataset of tweets and users. We will start by cleaning the data, handling missing values and transforming the data to allow better analysis. To continue, in an attempt to gain greater insights into user and bot behaviours, exploratory data analysis will be conducted through visualizations. Finally, we will discuss the implications of our findings and how they can be used to inform decision-making and future research.
+
+## Dataset Collection
+
+### Raw:
+
+tweets_spam.csv - tweet features made by spam users
+
+tweets.csv - tweet features made by normal users
+
+users_spam.csv - spam user features
+
+users.csv - normal user features
+
+### Processed:
+
+user.csv - all users with selected features
+
+## Data Pre-processing
+
+To commence the implementation of the machine learning models, we must first process the data. Data Pre-processing begins with reading four raw datasets in the form of CSV files and importing the necessary libraries such as pandas for data handling and NLTK for stemming. These datasets contain user and tweet information for spam and normal users, therefore, are intrinsically interconnected via ids as tweets are linked to users who created and posted them for both normal and spam users respectively.
+
+The initial step for data pre-processing pertains to data cleaning, using the interconnected nature of the dataframes, normal and spam users who have no tweets in their respective tweet dataframes are removed. Likewise, tweets not belonging to any known users are also pruned from the dataset.
+
+Given the enormous size of the user tweets dataset (over two million rows) and the relatively equal size of the user and spam user datasets, the removal of data entries is required. The size reduction was accomplished by limiting the number of tweets each user could have to a maximum of 1000. As a result, the size of the dataset was reduced to 1 million tweets for around 1000 users. With the reduced size of the data sets, the spam and user datasets were merged with a label attribute to differentiate them.
+
+Given the abundance of user and tweet features, feature selection was a mandatory step.
+
+Selected User Features: 'label', 'id', 'name', 'screen_name', 'followers_count', 'friends_count', 'favourites_count', 'listed_count', 'location', 'default_profile', 'geo_enabled', 'verified', 'description'
+
+Selected Tweet Features: 'label', 'user_id', 'text', 'is_reply', 'place', 'retweet_count', 'favorite_count', 'possibly_sensitive', 'num_hashtags', 'num_mentions', 'num_urls'
+
+In addition to feature selection, some of the features required normalization which involved scaling tweet features such as 'is_reply' and 'place' to a common binary range of 0 and 1 so that the machine learning models can effectively utilize the features when compared to their raw forms.
+
+To continue, given the text attribute of the tweets dataset, some transformation needed to be done for a machine learning model to accurately analyze the data. The task was accomplished by transforming the text data to standardized word frequencies for each user as linked by the words in their tweets. Standardized words were selected by removing punctuation, converting all words to lowercase, and stemming them using the imported NLTK library.
+
+To conclude, the remaining features were checked and filled for missing values and the remaining two datasets were merged to form one final dataframe to use for data analysis using machine learning models.
+
+## Exploratory Data Analysis and Visualisations
+
+Data visualization is at the forefront of exploratory analysis, the creation of different visualizations such as graphs, plots, and charts illustrate hidden patterns and trends in the dataset. During our analysis, we utilized several visualization techniques, including the creation of ROC curves for our KNN, random forest, and sequential neural network models. These curves helped us understand the trade-offs between the true positive rate and false positive rate of each model and select the best-performing one.
+
+Additionally, we generated a correlation heatmap as our second visualization identifying the top features that are strongly correlated with the target variable. The addition of this knowledge allowed us to focus on the most important features during the model-building process. Furthermore, a bar chart was generated based on feature importance for the top 25 features. This gave us a clear understanding of the contribution of each feature to the predictive power of our model.
+
+![](images/featureImportance.png){width="500"}
+
+Finally, the last visualization, a learning curve helped us understand the performance of the model with respect to the size of the data used to train the model. The learning curve helped us identify the bias and variance in the model which led us to recognize whether the model was underfitting, overfitting, or fitting the data and to what degree. Moreover, insight was provided into the amount of data required to achieve the desired performance.
+
+Statistical analysis uses the implementation of statistical methods on data to identify patterns, trends, and relationships. One such method is the creation of a correlation heatmap, which can help identify the strength and direction of correlations between variables. As the correlation heatmap visualizes the connectedness of various features, ones with greater correlation can be used to differentiate between normal and spam users. This information can inform the feature selection process and guide the development of the machine learning model. Additionally, statistical analysis can help identify outliers and anomalies in the data such as the frequency count for "our" which showed no correlation between any other word features.
+
+![](images/corrHeatMap-2.png){width="400"}
+
+Feature selection, the process of selecting the most important variables to be used in the machine learning model. Therefore, the identification of which variables are most predictive and which variables can be ignored becomes easier. In this study, the feature selection was performed using the correlation matrix and recursive feature elimination. The correlation matrix identified highly correlated variables, while recursive feature elimination helped to identify the most important variables. The feature selection process helped to reduce the complexity of the model and improve its accuracy.

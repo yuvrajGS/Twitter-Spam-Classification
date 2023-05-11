@@ -1,0 +1,4 @@
+defaults:
+  - pandoc:
+      args:
+        - --pdf-engine=xelatex
